@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 interface HomeScreenProperties {
-  number: number,
-  increase: Function,
-  decrease: Function
+  number: number;
+  increase: Function;
+  decrease: Function;
 }
 
 class Home extends React.Component<HomeScreenProperties, any> {
@@ -13,8 +13,10 @@ class Home extends React.Component<HomeScreenProperties, any> {
       <div>
         Some state changes:
         {number}
-        <button onClick={() => increase(1)}>Increase</button>
-        <button onClick={() => decrease(1)}>Decrease</button>
+        <div>
+          <button onClick={() => increase(1)}>Increase</button>
+          <button onClick={() => decrease(1)}>Decrease</button>
+        </div>
       </div>
     );
   }

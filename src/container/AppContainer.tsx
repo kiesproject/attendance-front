@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, Link, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
 
-import Home from '../components/Home';
-import Root from '../components/Root';
-import Login from '../components/Login';
+import Home from '../components/screens/Home';
+import Root from '../components/screens/Root';
+import Login from '../components/screens/Login';
+import Footer from '../components/Footer';
 
-import { increase, decrease } from '../action/index';
+import { increase, decrease } from '../action';
 
 interface ContainerProperties {
-  number: number,
-  dispatch: any,
+  number: number;
+  dispatch: any;
 }
 
 class AppContainer extends React.Component<ContainerProperties, any> {
@@ -35,7 +36,9 @@ class AppContainer extends React.Component<ContainerProperties, any> {
     return (
       <BrowserRouter basename="/">
         <div className="content">
-          <h1>Welcome to サボらん♨️</h1>
+          <h1>
+            Welcome to サボらん♨
+          </h1>
           <div className="routings">
             <Switch>
               <Route
@@ -50,20 +53,12 @@ class AppContainer extends React.Component<ContainerProperties, any> {
                 exact
                 path="/"
                 render={
-                  props => <Home increase={this.increase} decrease={this.decrease} number={number} />
+                  () => <Home increase={this.increase} decrease={this.decrease} number={number} />
                 }
               />
             </Switch>
           </div>
-          <header>
-            Links:
-            {' '}
-            <Link to="/">Home</Link>
-            {' '}
-            <Link to="/login">Login</Link>
-            {' '}
-            <Link to="/root">RootPage</Link>
-          </header>
+          <Footer/>
         </div>
       </BrowserRouter>
     );
