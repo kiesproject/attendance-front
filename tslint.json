@@ -1,18 +1,19 @@
 {
-    "extends": [
-        "tslint-config-airbnb"
+  "extends": [
+    "tslint-config-airbnb"
+  ],
+  "rules": {
+    "max-line-length": [
+      true,
+      140
     ],
-    "rules": {
-        "max-line-length": [
-            true,
-            140
-        ],
-        "object-shorthand-properties-first": false,
-        "radix": false,
-        "ter-arrow-parens": false,
-        "variable-name": false,
-        "align": [
-            "arguments"
-        ]
-    }
+    "object-shorthand-properties-first": false,
+    "radix": false,
+    "ter-arrow-parens": false,
+    "variable-name": false,
+    "import-name": false,
+    "align": [
+      "arguments"
+    ],
+  }
 }
