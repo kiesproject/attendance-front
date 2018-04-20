@@ -1,4 +1,6 @@
 # 勤怠管理サイト「サボらん」
+
+[![Build Status](https://img.shields.io/travis/kiesproject/attendance-front/master.svg?style=for-the-badge&logo=travis)](https://travis-ci.org/kiesproject/attendance-front)
 勤怠管理をしようよ。  
 サーバーサイドは[こっち](https://github.com/kiesproject/kies-attendance)
 
