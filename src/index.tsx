@@ -6,9 +6,9 @@ import createBrowserHistory from 'history/createBrowserHistory';
 import { Router, Route } from 'react-router-dom';
 
 import AppContainer from './container/AppContainer';
-import AppReducer from './reducer/index';
+import { appReducer } from './reducer';
 
-const store = createStore(AppReducer);
+const store = createStore(appReducer);
 
 const history = createBrowserHistory();
 
