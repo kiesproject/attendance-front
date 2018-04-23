@@ -1,9 +1,9 @@
+import { createBrowserHistory } from 'history';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import createBrowserHistory from 'history/createBrowserHistory';
-import { Router, Route } from 'react-router-dom';
+import { Route, Router } from 'react-router-dom';
+import { createStore } from 'redux';
 
 import AppContainer from './container/AppContainer';
 import { appReducer } from './reducer';

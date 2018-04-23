@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Home from '../components/screens/Home';
-import Root from '../components/screens/Root';
-import Login from '../components/screens/Login';
 import Footer from '../components/Footer';
+import Home from '../components/screens/Home';
+import Login from '../components/screens/Login';
+import Root from '../components/screens/Root';
 
-import { increase, decrease } from '../action';
+import { decrease, increase } from '../action';
 
 interface ContainerProperties {
   number: number;
