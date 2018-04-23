@@ -8,9 +8,7 @@ import { Router, Route } from 'react-router-dom';
 import AppContainer from './container/AppContainer';
 import AppReducer from './reducer/index';
 
-const store = createStore(
-  AppReducer,
-);
+const store = createStore(AppReducer);
 
 const history = createBrowserHistory();
 

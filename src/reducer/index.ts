@@ -15,8 +15,8 @@ function number(state = initialState, action: any): number {
   }
 }
 
-const AppReducer = combineReducers({
+const appReducer = combineReducers({
   number,
 });
 
-export default AppReducer;
+export default appReducer;

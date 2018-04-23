@@ -36,29 +36,25 @@ class AppContainer extends React.Component<ContainerProperties, any> {
     return (
       <BrowserRouter basename="/">
         <div className="content">
-          <h1>
-            Welcome to サボらん♨
-          </h1>
+          <h1>Welcome to サボらん♨</h1>
           <div className="routings">
             <Switch>
-              <Route
-                path="/login"
-                component={Login}
-              />
-              <Route
-                path="/root"
-                component={Root}
-              />
+              <Route path="/login" component={Login} />
+              <Route path="/root" component={Root} />
               <Route
                 exact
                 path="/"
-                render={
-                  () => <Home increase={this.increase} decrease={this.decrease} number={number} />
-                }
+                render={() => (
+                  <Home
+                    increase={this.increase}
+                    decrease={this.decrease}
+                    number={number}
+                  />
+                )}
               />
             </Switch>
           </div>
-          <Footer/>
+          <Footer />
         </div>
       </BrowserRouter>
     );
@@ -66,9 +62,9 @@ class AppContainer extends React.Component<ContainerProperties, any> {
 }
 
 function mapStateToProps(state: any): object {
-  return ({
+  return {
     number: state.number,
-  });
+  };
 }
 
 export default connect(mapStateToProps)(AppContainer);
