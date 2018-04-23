@@ -10,5 +10,11 @@ script: npm run-script build
 deploy:
   provider: script
   script: npx firebase deploy --token "$FIREBASE_TOKEN"
+  skip_cleanup: true
   on:
     branch: master
+notifications:
+  slack:
+    secure: J0uk7UZAJOw+pAs3FDIExoOA4D5yWAiIESTgcgDSAuQOnuu4RQRczkhW67YHeyBhE0YhOPXEjgqd5/ERYb6JDBDfL0alcR2z+sDvV8LPQQA9X7Muw+czk5NHmTMuG0qzM8MQyb7Uw4fZv/tZQFL1fIUPRGH8yTGY0cEVKeLl7VEaKNiGjP0UHUhn6LisSGQ33qKY23NDIYiGgeOVh/O8rNE0vdzh/Q8gMTWV/mGFBBgtdMY2oR+CqfZ9vgx7jIxXSj7BMR4sV6/oQWztm2HSQWTUCdQ7NDiBYLRFKPIavrCdhZHE78jCBPEKZ44kXmrKWFbfRGLAaQUPUDqqZr0BJxQjAgaE/ocRTtM6bp17ZBkSmK3UGQSkSQoqi2m7Br3DW+FSbCuaWn3UA0oF7oQBhK/KmSYO2W0k+yQU1K2mVgRcBETxxZY76mzp3ZK1pCuvgtS+eYv9XLdRJnaKYX/V8SxAs9AMF+ZDh50GZW6NTOi36aMe+abei7Eiq11Y4aKKa0zlBT3vEqaXRq0sU+Wz76kcV3YJSp+OA2q5hTWEPetGX2liovL8uk5OfnjVMLCU08/4SNVZ+81xNYXxmd4YPnO9o0FkP72fxh2+7ofTxm6A2KIEgELxa/WDSzPNIfblfC9B4bp1VyxtBBD5H/SLxAigWC0p1JK3SIsgtia3rUA=
+    on_success: change
+  email: false
