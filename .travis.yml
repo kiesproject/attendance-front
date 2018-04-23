@@ -5,8 +5,9 @@ node_js:
 cache:
   directories:
     - "node_modules"
-# とりあえずビルドするだけ
-script: npm run-script build
+script:
+  - npm run-script lint
+  - npm run-script build
 deploy:
   provider: script
   script: npx firebase deploy --token "$FIREBASE_TOKEN"
