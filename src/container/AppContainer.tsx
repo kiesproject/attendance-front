@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Home from '../components/screens/Home';
-import Root from '../components/screens/Root';
-import Login from '../components/screens/Login';
 import Footer from '../components/Footer';
+import Home from '../components/screens/Home';
+import Login from '../components/screens/Login';
+import Root from '../components/screens/Root';
 
-import { increase, decrease } from '../action';
+import { decrease, increase } from '../action';
 
 interface ContainerProperties {
   number: number;
@@ -36,29 +36,25 @@ class AppContainer extends React.Component<ContainerProperties, any> {
     return (
       <BrowserRouter basename="/">
         <div className="content">
-          <h1>
-            Welcome to サボらん♨
-          </h1>
+          <h1>Welcome to サボらん♨</h1>
           <div className="routings">
             <Switch>
-              <Route
-                path="/login"
-                component={Login}
-              />
-              <Route
-                path="/root"
-                component={Root}
-              />
+              <Route path="/login" component={Login} />
+              <Route path="/root" component={Root} />
               <Route
                 exact
                 path="/"
-                render={
-                  () => <Home increase={this.increase} decrease={this.decrease} number={number} />
-                }
+                render={() => (
+                  <Home
+                    increase={this.increase}
+                    decrease={this.decrease}
+                    number={number}
+                  />
+                )}
               />
             </Switch>
           </div>
-          <Footer/>
+          <Footer />
         </div>
       </BrowserRouter>
     );
@@ -66,9 +62,9 @@ class AppContainer extends React.Component<ContainerProperties, any> {
 }
 
 function mapStateToProps(state: any): object {
-  return ({
+  return {
     number: state.number,
-  });
+  };
 }
 
 export default connect(mapStateToProps)(AppContainer);
