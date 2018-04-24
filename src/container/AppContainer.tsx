@@ -9,13 +9,13 @@ import Root from '../components/screens/Root';
 
 import { decrease, increase } from '../action';
 
-interface ContainerProperties {
+interface AppContainerProperties {
   number: number;
   dispatch: any;
 }
 
-class AppContainer extends React.Component<ContainerProperties, any> {
-  constructor(props: ContainerProperties) {
+class AppContainer extends React.Component<AppContainerProperties, any> {
+  constructor(props: AppContainerProperties) {
     super(props);
     this.increase = this.increase.bind(this);
     this.decrease = this.decrease.bind(this);
@@ -42,8 +42,7 @@ class AppContainer extends React.Component<ContainerProperties, any> {
               <Route path="/login" component={Login} />
               <Route path="/root" component={Root} />
               <Route
-                exact
-                path="/"
+                path="/home"
                 render={() => (
                   <Home
                     increase={this.increase}
