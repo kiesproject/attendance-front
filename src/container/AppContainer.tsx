@@ -8,6 +8,7 @@ import Login from '../components/screens/Login';
 import Root from '../components/screens/Root';
 
 import { decrease, increase } from '../action';
+import Navbar from '../components/Navbar';
 
 interface AppContainerProperties {
   number: number;
@@ -36,7 +37,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     return (
       <BrowserRouter basename="/">
         <div className="content">
-          <h1>Welcome to サボらん♨</h1>
+          <Navbar />
           <div className="routings">
             <Switch>
               <Route path="/login" component={Login} />
