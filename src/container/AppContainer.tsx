@@ -2,7 +2,6 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Footer from '../components/Footer';
 import Home from '../components/screens/Home';
 import Login from '../components/screens/Login';
 
@@ -52,7 +51,6 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
               />
             </Switch>
           </div>
-          <Footer />
         </div>
       </BrowserRouter>
     );
