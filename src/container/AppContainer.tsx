@@ -36,21 +36,19 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
       <BrowserRouter basename="/">
         <div className="content">
           <Navbar loggedIn={false} username={null} isAdmin={null} />
-          <div className="routings">
-            <Switch>
-              <Route path="/login" component={Login} />
-              <Route
-                path="/home"
-                render={() => (
-                  <Home
-                    increase={this.increase}
-                    decrease={this.decrease}
-                    number={number}
-                  />
-                )}
-              />
-            </Switch>
-          </div>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route
+              path="/home"
+              render={() => (
+                <Home
+                  increase={this.increase}
+                  decrease={this.decrease}
+                  number={number}
+                />
+              )}
+            />
+          </Switch>
         </div>
       </BrowserRouter>
     );
