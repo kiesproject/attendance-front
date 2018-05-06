@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Home from '../components/screens/Home';
 import Login from '../components/screens/Login';
-import Root from '../components/screens/Root';
 
 import { decrease, increase } from '../action';
 import Navbar from '../components/Navbar';
@@ -41,7 +40,6 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
           <div className="routings">
             <Switch>
               <Route path="/login" component={Login} />
-              <Route path="/root" component={Root} />
               <Route
                 path="/home"
                 render={() => (
