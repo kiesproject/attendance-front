@@ -37,7 +37,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     return (
       <BrowserRouter basename="/">
         <div className="content">
-          <Navbar />
+          <Navbar loggedIn={false} username={null} isAdmin={null} />
           <div className="routings">
             <Switch>
               <Route path="/login" component={Login} />
