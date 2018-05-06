@@ -1,28 +1,5 @@
-.loginComponent {
-  padding: 8px;
-}
-
-.header {
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-
-.input {
-  margin-top: 4px;
-  margin-bottom: 4px;
-  border: 1px solid #d1d5da;
-  border-radius: 3px;
-  line-height: 20px;
-  width: 100%;
-  max-width: 300px;
-}
-
-.loginButton {
-  background: limegreen;
-  color: #ffffff;
-  height: 30px;
-}
-
-dd {
-  margin-left: 0;
+.login-form {
+  max-width: 20rem;
+  margin: auto;
+  padding-top: 5rem;
 }
