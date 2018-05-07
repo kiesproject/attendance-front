@@ -11,6 +11,7 @@ class Login extends React.Component<any, any> {
             type="text"
             className="siimple-input siimple-input--fluid"
             placeholder="kiesproject"
+            required
           />
         </div>
         <div className="siimple-form-field">
@@ -19,6 +20,7 @@ class Login extends React.Component<any, any> {
             type="password"
             className="siimple-input siimple-input--fluid"
             placeholder="*********"
+            required
           />
         </div>
         <div className="siimple-form-field">
