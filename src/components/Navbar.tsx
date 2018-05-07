@@ -11,15 +11,12 @@ class UserNavigation extends React.Component<NavbarProperties, any> {
   render() {
     const { loggedIn, isAdmin } = this.props;
     if (loggedIn) {
-      if (isAdmin) {
-        return (
-          <div>
-            <a className="siimple-navbar-link">管理画面</a>
-            <div className="siimple-btn siimple-btn--navy">ログアウト</div>
-          </div>
-        );
-      }
-      return <div className="siimple-btn siimple-btn--navy">ログアウト</div>;
+      return (
+        <div>
+          {isAdmin && <a className="siimple-navbar-link">管理画面</a>}
+          <div className="siimple-btn siimple-btn--navy">ログアウト</div>
+        </div>
+      );
     }
     return (
       <Link to="/login" className="siimple-btn siimple-btn--blue">
