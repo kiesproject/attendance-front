@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 interface NavbarProperties {
   loggedIn: boolean;
-  username: string | null;
-  isAdmin: boolean | null;
+  username?: string;
+  isAdmin?: boolean;
 }
 
 class UserNavigation extends React.Component<NavbarProperties, any> {
