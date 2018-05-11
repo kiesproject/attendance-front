@@ -30,7 +30,7 @@ class Navbar extends React.Component<NavbarProperties, any> {
   render() {
     const { loggedIn, username, isAdmin } = this.props;
     return (
-      <div className="siimple-navbar siimple-navbar--teal siimple-navbar--fluid">
+      <div className="siimple-navbar siimple-navbar--orange siimple-navbar--fluid">
         <Link to="/" className="siimple-navbar-title">
           サボらん♨
         </Link>
