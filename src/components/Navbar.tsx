@@ -1,46 +1,37 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 
+import Account from '../models/Account';
+
 interface NavbarProperties {
-  loggedIn: boolean;
-  username?: string;
-  isAdmin?: boolean;
+  account: Account;
 }
 
-class UserNavigation extends React.Component<NavbarProperties, any> {
-  render() {
-    const { loggedIn, isAdmin } = this.props;
-    if (loggedIn) {
-      return (
-        <div>
-          {isAdmin && <a className="siimple-navbar-link">管理画面</a>}
-          <div className="siimple-btn siimple-btn--navy">ログアウト</div>
-        </div>
-      );
-    }
+const UserNavigation = (account: Account) => {
+  if (account.loggedIn) {
     return (
-      <Link to="/login" className="siimple-btn siimple-btn--blue">
-        ログイン
-      </Link>
+      <div>
+        {account.isAdmin && <a className="siimple-navbar-link">管理画面</a>}
+        <div className="siimple-btn siimple-btn--navy">ログアウト</div>
+      </div>
     );
   }
-}
+  return (
+    <Link to="/login" className="siimple-btn siimple-btn--blue">
+      ログイン
+    </Link>
+  );
+};
 
 class Navbar extends React.Component<NavbarProperties, any> {
   render() {
-    const { loggedIn, username, isAdmin } = this.props;
+    const { account } = this.props;
     return (
       <div className="siimple-navbar siimple-navbar--orange siimple-navbar--fluid">
         <Link to="/" className="siimple-navbar-title">
           サボらん♨
         </Link>
-        <div className="siimple-layout--right">
-          <UserNavigation
-            loggedIn={loggedIn}
-            username={username}
-            isAdmin={isAdmin}
-          />
-        </div>
+        <div className="siimple-layout--right">{UserNavigation(account)}</div>
       </div>
     );
   }
