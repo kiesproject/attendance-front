@@ -5,11 +5,13 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from '../components/screens/Home';
 import Login from '../components/screens/Login';
 
-import { decrease, increase, login } from '../action';
+import { decrease, increase, loginAsync } from '../action';
 import Navbar from '../components/Navbar';
+import Account from '../models/Account';
 
 interface AppContainerProperties {
   number: number;
+  account: Account;
   dispatch: any;
 }
 
@@ -33,15 +35,15 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
 
   login(id: string, password: string): void {
     const { dispatch } = this.props;
-    dispatch(login(id, password));
+    dispatch(loginAsync(id, password));
   }
 
   render() {
-    const { number } = this.props;
+    const { number, account } = this.props;
     return (
       <BrowserRouter basename="/">
         <div className="content">
-          <Navbar loggedIn={false} />
+          <Navbar account={account} />
           <Switch>
             <Route path="/login" render={() => <Login login={this.login} />} />
             <Route
@@ -64,6 +66,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
 function mapStateToProps(state: any): object {
   return {
     number: state.number,
+    account: state.account,
   };
 }
 
