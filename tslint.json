@@ -5,6 +5,7 @@
     "ordered-imports": true,
     "import-name": false,
     "object-shorthand-properties-first": false,
+    "variable-name": false,
     "prettier": [
       true,
       {
