@@ -8,15 +8,18 @@ interface NavbarProperties {
 }
 
 const UserNavigation = (account: Account) => {
-  if (account.loggedIn) {
-    return (
-      <div>
-        {account.isAdmin && <a className="siimple-navbar-link">管理画面</a>}
-        <div className="siimple-btn siimple-btn--navy">ログアウト</div>
+  return account.loggedIn ? (
+    <div>
+      {account.isAdmin && <a className="siimple-navbar-link">管理画面</a>}
+      <div
+        className="siimple-btn siimple-btn--navy"
+        // TODO: dispatch logout action
+        onClick={() => console.log('hoge')}
+      >
+        ログアウト
       </div>
-    );
-  }
-  return (
+    </div>
+  ) : (
     <Link to="/login" className="siimple-btn siimple-btn--blue">
       ログイン
     </Link>
