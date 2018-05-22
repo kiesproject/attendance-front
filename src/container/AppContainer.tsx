@@ -2,23 +2,25 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Footer from '../components/Footer';
 import Home from '../components/screens/Home';
 import Login from '../components/screens/Login';
-import Root from '../components/screens/Root';
 
-import { decrease, increase } from '../action';
+import { decrease, increase, loginAsync } from '../action';
+import Navbar from '../components/Navbar';
+import Account from '../models/Account';
 
-interface ContainerProperties {
+interface AppContainerProperties {
   number: number;
+  account: Account;
   dispatch: any;
 }
 
-class AppContainer extends React.Component<ContainerProperties, any> {
-  constructor(props: ContainerProperties) {
+class AppContainer extends React.Component<AppContainerProperties, any> {
+  constructor(props: AppContainerProperties) {
     super(props);
     this.increase = this.increase.bind(this);
     this.decrease = this.decrease.bind(this);
+    this.login = this.login.bind(this);
   }
 
   increase(count: number): void {
@@ -31,30 +33,30 @@ class AppContainer extends React.Component<ContainerProperties, any> {
     dispatch(decrease(count));
   }
 
+  login(id: string, password: string): void {
+    const { dispatch } = this.props;
+    dispatch(loginAsync(id, password));
+  }
+
   render() {
-    const { number } = this.props;
+    const { number, account } = this.props;
     return (
       <BrowserRouter basename="/">
         <div className="content">
-          <h1>Welcome to サボらん♨</h1>
-          <div className="routings">
-            <Switch>
-              <Route path="/login" component={Login} />
-              <Route path="/root" component={Root} />
-              <Route
-                exact
-                path="/"
-                render={() => (
-                  <Home
-                    increase={this.increase}
-                    decrease={this.decrease}
-                    number={number}
-                  />
-                )}
-              />
-            </Switch>
-          </div>
-          <Footer />
+          <Navbar account={account} />
+          <Switch>
+            <Route path="/login" render={() => <Login login={this.login} />} />
+            <Route
+              path="/home"
+              render={() => (
+                <Home
+                  increase={this.increase}
+                  decrease={this.decrease}
+                  number={number}
+                />
+              )}
+            />
+          </Switch>
         </div>
       </BrowserRouter>
     );
@@ -64,6 +66,7 @@ class AppContainer extends React.Component<ContainerProperties, any> {
 function mapStateToProps(state: any): object {
   return {
     number: state.number,
+    account: state.account,
   };
 }
 

@@ -1,4 +1,7 @@
 import { combineReducers } from 'redux';
+
+import Account from '../models/Account';
+
 const initialState = 1;
 
 function number(state = initialState, action: any): number {
@@ -15,6 +18,28 @@ function number(state = initialState, action: any): number {
   }
 }
 
+const initialAccountState: Account = {
+  loggedIn: false,
+  isAdmin: false,
+  username: 'けつばん',
+};
+
+function account(state = initialAccountState, action: any): Account {
+  switch (action.type) {
+    case 'LOGIN': {
+      return {
+        loggedIn: true,
+        isAdmin: action.isAdmin,
+        username: action.username,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
 export const appReducer = combineReducers({
   number,
+  account,
 });

@@ -1,7 +1,11 @@
-$baseColor: #fff;
+@import "siimple";
 
-body {
+$baseColor: #ffffff;
+
+html, body {
   background: $baseColor;
+  margin: 0;
+  padding: 0;
 
   h1 {
     font-size: 8vmin;
@@ -15,4 +19,4 @@ body {
   }
 }
 
-@import "footer";
+@import "login";
