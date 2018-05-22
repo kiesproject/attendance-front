@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface LoginProperties {
-  login: (id: string, password: string) => void;
+  login(id: string, password: string): void;
 }
 
 interface LoginState {
@@ -21,7 +21,11 @@ class Login extends React.Component<LoginProperties, LoginState> {
   render() {
     const { login } = this.props;
     return (
-      <div className="siimple-form login-form">
+      <form
+        className="siimple-form login-form"
+        autoComplete="off"
+        method="post"
+      >
         <div className="siimple-form-title">ログイン</div>
         <div className="siimple-form-field">
           <div className="siimple-form-field-label">ユーザー名</div>
@@ -46,14 +50,15 @@ class Login extends React.Component<LoginProperties, LoginState> {
           />
         </div>
         <div className="siimple-form-field">
-          <div
+          <button
             className="siimple-btn siimple-btn--blue"
+            type="button"
             onClick={() => login(this.state.id, this.state.password)}
           >
             ログイン
-          </div>
+          </button>
         </div>
-      </div>
+      </form>
     );
   }
 }
