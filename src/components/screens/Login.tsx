@@ -1,11 +1,15 @@
 import * as React from 'react';
+import { Redirect } from 'react-router-dom';
+
+import Account from '../../models/Account';
 
 interface LoginProperties {
   login(id: string, password: string): void;
+  account: Account;
 }
 
 interface LoginState {
-  id: string;
+  name: string;
   password: string;
 }
 
@@ -13,14 +17,16 @@ class Login extends React.Component<LoginProperties, LoginState> {
   constructor(props: LoginProperties) {
     super(props);
     this.state = {
-      id: '',
+      name: '',
       password: '',
     };
   }
 
   render() {
-    const { login } = this.props;
-    return (
+    const { login, account } = this.props;
+    return account.loggedIn ? (
+      <Redirect to="/home" />
+    ) : (
       <form
         className="siimple-form login-form"
         autoComplete="off"
@@ -34,8 +40,8 @@ class Login extends React.Component<LoginProperties, LoginState> {
             className="siimple-input siimple-input--fluid"
             placeholder="kiesproject"
             required
-            value={this.state.id}
-            onChange={event => this.setState({ id: event.target.value })}
+            value={this.state.name}
+            onChange={event => this.setState({ name: event.target.value })}
           />
         </div>
         <div className="siimple-form-field">
@@ -53,7 +59,7 @@ class Login extends React.Component<LoginProperties, LoginState> {
           <button
             className="siimple-btn siimple-btn--blue"
             type="button"
-            onClick={() => login(this.state.id, this.state.password)}
+            onClick={() => login(this.state.name, this.state.password)}
           >
             ログイン
           </button>

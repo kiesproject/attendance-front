@@ -4,15 +4,10 @@ import { login, LoginAsync } from '../action/';
 import { postLogin } from '../api/AttendanceApi';
 
 function* loginAsync(action: LoginAsync) {
-  // TODO: post `/login`, and put `account` reducer
   const { username: name, password } = action;
-  console.log({
-    name,
-    password,
-  });
   try {
     const response = yield call(postLogin, name, password);
-    yield console.log('response', response);
+    yield put(login(response.name, response.password));
   } catch (error) {
     // TODO: put action to error
     yield console.error(error.message);
