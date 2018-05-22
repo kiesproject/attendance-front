@@ -45,11 +45,15 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
         <div className="content">
           <Navbar account={account} />
           <Switch>
-            <Route path="/login" render={() => <Login login={this.login} />} />
+            <Route
+              path="/login"
+              render={() => <Login login={this.login} account={account} />}
+            />
             <Route
               path="/home"
               render={() => (
                 <Home
+                  account={account}
                   increase={this.increase}
                   decrease={this.decrease}
                   number={number}
