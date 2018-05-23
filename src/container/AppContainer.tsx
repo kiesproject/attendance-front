@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Home from '../components/screens/Home';
 import Login from '../components/screens/Login';
 
-import { decrease, increase, loginAsync } from '../action';
+import { decrease, increase, loginAsync, logout } from '../action';
 import Navbar from '../components/Navbar';
 import Account from '../models/Account';
 
@@ -21,6 +21,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     this.increase = this.increase.bind(this);
     this.decrease = this.decrease.bind(this);
     this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
   }
 
   increase(count: number): void {
@@ -38,12 +39,17 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     dispatch(loginAsync(id, password));
   }
 
+  logout(): void {
+    const { dispatch } = this.props;
+    dispatch(logout());
+  }
+
   render() {
     const { number, account } = this.props;
     return (
       <BrowserRouter basename="/">
         <div className="content">
-          <Navbar account={account} />
+          <Navbar account={account} logout={this.logout} />
           <Switch>
             <Route
               path="/login"

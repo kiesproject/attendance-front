@@ -7,7 +7,8 @@ function* loginAsync(action: LoginAsync) {
   const { username: name, password } = action;
   try {
     const response = yield call(postLogin, name, password);
-    yield put(login(response.name, response.password));
+    // TODO: get administer authority by response
+    yield put(login(response.user, true));
   } catch (error) {
     // TODO: put action to error
     yield console.error(error.message);
