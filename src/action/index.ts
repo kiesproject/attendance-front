@@ -24,6 +24,11 @@ export interface LoginAsync {
   password: string;
 }
 
+const LOGOUT = 'LOGOUT';
+export interface Logout {
+  type: string;
+}
+
 export function increase(n: number): Increase {
   return {
     type: INCREASE,
@@ -51,5 +56,11 @@ export function loginAsync(username: string, password: string): LoginAsync {
     type: LOGIN_ASYNC,
     username,
     password,
+  };
+}
+
+export function logout(): Logout {
+  return {
+    type: LOGOUT,
   };
 }
