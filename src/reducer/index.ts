@@ -33,6 +33,13 @@ function account(state = initialAccountState, action: any): Account {
         username: action.username,
       };
     }
+    case 'LOGOUT': {
+      return {
+        loggedIn: false,
+        isAdmin: false,
+        username: '',
+      };
+    }
     default: {
       return state;
     }
