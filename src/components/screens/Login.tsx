@@ -2,10 +2,12 @@ import * as React from 'react';
 import { Redirect } from 'react-router-dom';
 
 import Account from '../../models/Account';
+import Error from '../../models/Error';
 
 interface LoginProperties {
   login(id: string, password: string): void;
   account: Account;
+  error: Error;
 }
 
 interface LoginState {
@@ -37,7 +39,7 @@ class Login extends React.Component<LoginProperties, LoginState> {
   }
 
   render() {
-    const { login, account } = this.props;
+    const { login, account, error } = this.props;
     return account.loggedIn ? (
       <Redirect to="/home" />
     ) : (
@@ -76,6 +78,9 @@ class Login extends React.Component<LoginProperties, LoginState> {
             ログイン
           </button>
         </div>
+        {error.isError && (
+          <div className="siimple-form-field-helper">{error.message}</div>
+        )}
       </form>
     );
   }
