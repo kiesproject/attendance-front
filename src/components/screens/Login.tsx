@@ -20,6 +20,20 @@ class Login extends React.Component<LoginProperties, LoginState> {
       name: '',
       password: '',
     };
+    this.handleLogin = this.handleLogin.bind(this);
+  }
+
+  handleLogin(
+    event: React.FormEvent<HTMLElement>,
+    name: string,
+    password: string,
+  ) {
+    const { login } = this.props;
+    if (name === '' || password === '') {
+      return;
+    }
+    login(name, password);
+    event.preventDefault();
   }
 
   render() {
@@ -27,11 +41,7 @@ class Login extends React.Component<LoginProperties, LoginState> {
     return account.loggedIn ? (
       <Redirect to="/home" />
     ) : (
-      <form
-        className="siimple-form login-form"
-        autoComplete="off"
-        method="post"
-      >
+      <form className="siimple-form login-form">
         <div className="siimple-form-title">ログイン</div>
         <div className="siimple-form-field">
           <div className="siimple-form-field-label">ユーザー名</div>
@@ -58,8 +68,10 @@ class Login extends React.Component<LoginProperties, LoginState> {
         <div className="siimple-form-field">
           <button
             className="siimple-btn siimple-btn--blue"
-            type="button"
-            onClick={() => login(this.state.name, this.state.password)}
+            type="submit"
+            onClick={event =>
+              this.handleLogin(event, this.state.name, this.state.password)
+            }
           >
             ログイン
           </button>
