@@ -79,7 +79,9 @@ class Login extends React.Component<LoginProperties, LoginState> {
           </button>
         </div>
         {error.isError && (
-          <div className="siimple-form-field-helper">{error.message}</div>
+          <div className="siimple-form-field-helper siimple--color-red">
+            {error.message}
+          </div>
         )}
       </form>
     );
