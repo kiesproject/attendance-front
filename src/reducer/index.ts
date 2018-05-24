@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 
 import Account from '../models/Account';
+import Error from '../models/Error';
 
 const initialState = 1;
 
@@ -46,7 +47,27 @@ function account(state = initialAccountState, action: any): Account {
   }
 }
 
+const initialErrorState: Error = {
+  isError: false,
+  message: '不明なエラー',
+};
+
+function error(state = initialErrorState, action: any): Error {
+  switch (action.type) {
+    case 'LOGIN_ERROR': {
+      return {
+        isError: action.isError,
+        message: action.message,
+      };
+    }
+    default: {
+      return state;
+    }
+  }
+}
+
 export const appReducer = combineReducers({
   number,
   account,
+  error,
 });
