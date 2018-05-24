@@ -29,6 +29,13 @@ export interface Logout {
   type: string;
 }
 
+const LOGIN_ERROR = 'LOGIN_ERROR';
+export interface LoginError {
+  type: string;
+  isError: boolean;
+  message: string;
+}
+
 export function increase(n: number): Increase {
   return {
     type: INCREASE,
@@ -62,5 +69,13 @@ export function loginAsync(username: string, password: string): LoginAsync {
 export function logout(): Logout {
   return {
     type: LOGOUT,
+  };
+}
+
+export function error(isError: boolean, message: string): LoginError {
+  return {
+    type: LOGIN_ERROR,
+    isError,
+    message,
   };
 }
