@@ -16,7 +16,7 @@ export function postLogin(name: string, password: string) {
     mode: 'cors',
   }).then(res => {
     if (!res.ok) {
-      res.json().then(data => {
+      return res.json().then(data => {
         throw new Error(data.message);
       });
     }

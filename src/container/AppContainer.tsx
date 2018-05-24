@@ -8,10 +8,12 @@ import Login from '../components/screens/Login';
 import { decrease, increase, loginAsync, logout } from '../action';
 import Navbar from '../components/Navbar';
 import Account from '../models/Account';
+import Error from '../models/Error';
 
 interface AppContainerProperties {
   number: number;
   account: Account;
+  error: Error;
   dispatch: any;
 }
 
@@ -45,7 +47,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
   }
 
   render() {
-    const { number, account } = this.props;
+    const { number, account, error } = this.props;
     return (
       <BrowserRouter basename="/">
         <div className="content">
@@ -53,7 +55,9 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
           <Switch>
             <Route
               path="/login"
-              render={() => <Login login={this.login} account={account} />}
+              render={() => (
+                <Login login={this.login} account={account} error={error} />
+              )}
             />
             <Route
               path="/home"
@@ -77,6 +81,7 @@ function mapStateToProps(state: any): object {
   return {
     number: state.number,
     account: state.account,
+    error: state.error,
   };
 }
 
