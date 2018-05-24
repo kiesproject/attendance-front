@@ -1,6 +1,6 @@
 import { all, call, put, takeEvery } from 'redux-saga/effects';
 
-import { login, LoginAsync } from '../action/';
+import { error as errorAction, login, LoginAsync } from '../action/';
 import { postLogin } from '../api/AttendanceApi';
 
 function* loginAsync(action: LoginAsync) {
@@ -9,9 +9,10 @@ function* loginAsync(action: LoginAsync) {
     const response = yield call(postLogin, name, password);
     // TODO: get administer authority by response
     yield put(login(response.user, true));
+    yield put(errorAction(false, ''));
   } catch (error) {
     // TODO: put action to error
-    yield console.error(error.message);
+    yield put(errorAction(true, error.message));
   }
 }
 
