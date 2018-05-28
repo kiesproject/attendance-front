@@ -8,6 +8,7 @@ interface LoginProperties {
   login(id: string, password: string): void;
   account: Account;
   error: Error;
+  refreshError(): void;
 }
 
 interface LoginState {
@@ -25,21 +26,27 @@ class Login extends React.Component<LoginProperties, LoginState> {
     this.handleLogin = this.handleLogin.bind(this);
   }
 
+  componentWillMount() {
+    const { refreshError } = this.props;
+    refreshError();
+  }
+
   handleLogin(
     event: React.FormEvent<HTMLElement>,
     name: string,
     password: string,
   ) {
-    const { login } = this.props;
+    const { login, refreshError } = this.props;
     if (name === '' || password === '') {
       return;
     }
+    refreshError();
     login(name, password);
     event.preventDefault();
   }
 
   render() {
-    const { login, account, error } = this.props;
+    const { account, error } = this.props;
     return account.loggedIn ? (
       <Redirect to="/home" />
     ) : (
