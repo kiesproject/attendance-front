@@ -24,6 +24,13 @@ export interface LoginAsync {
   password: string;
 }
 
+const REGISTER = 'REGISTER';
+export interface RegisterAsync {
+  type: string;
+  username: string;
+  password: string;
+}
+
 const LOGOUT = 'LOGOUT';
 export interface Logout {
   type: string;
@@ -61,6 +68,17 @@ export function login(username: string, isAdmin: boolean): Login {
 export function loginAsync(username: string, password: string): LoginAsync {
   return {
     type: LOGIN_ASYNC,
+    username,
+    password,
+  };
+}
+
+export function registerAsync(
+  username: string,
+  password: string,
+): RegisterAsync {
+  return {
+    type: REGISTER,
     username,
     password,
   };
