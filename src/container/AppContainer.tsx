@@ -6,7 +6,14 @@ import Home from '../components/screens/Home';
 import Login from '../components/screens/Login';
 import Register from '../components/screens/Register';
 
-import { decrease, error, increase, loginAsync, logout } from '../action';
+import {
+  decrease,
+  error,
+  increase,
+  loginAsync,
+  logout,
+  registerAsync,
+} from '../action';
 import Navbar from '../components/Navbar';
 import Account from '../models/Account';
 import Error from '../models/Error';
@@ -46,7 +53,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
 
   register(name: string, password: string): void {
     const { dispatch } = this.props;
-    dispatch(loginAsync(name, password));
+    dispatch(registerAsync(name, password));
   }
 
   logout(): void {

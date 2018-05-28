@@ -14,10 +14,19 @@ function* loginAsync(action: LoginAsync) {
   }
 }
 
+function* registerAsync(action: any) {
+  const { username: name, password } = action;
+  yield console.log('registerAsync', name, password);
+}
+
 function* watchLogin() {
   yield takeEvery('LOGIN_ASYNC', loginAsync);
 }
 
+function* watchRegister() {
+  yield takeEvery('REGISTER_ASYNC', registerAsync);
+}
+
 export default function* rootSaga() {
-  yield all([watchLogin()]);
+  yield all([watchLogin(), watchRegister()]);
 }

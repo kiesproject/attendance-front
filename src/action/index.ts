@@ -24,7 +24,7 @@ export interface LoginAsync {
   password: string;
 }
 
-const REGISTER = 'REGISTER';
+const REGISTER_ASYNC = 'REGISTER_ASYNC';
 export interface RegisterAsync {
   type: string;
   username: string;
@@ -78,7 +78,7 @@ export function registerAsync(
   password: string,
 ): RegisterAsync {
   return {
-    type: REGISTER,
+    type: REGISTER_ASYNC,
     username,
     password,
   };
