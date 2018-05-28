@@ -6,6 +6,7 @@ import Error from '../../models/Error';
 interface RegisterProperties {
   account: Account;
   error: Error;
+  register(name: string, password: string): void;
   handleError(isError: boolean, message: string): void;
 }
 
@@ -37,7 +38,7 @@ class Register extends React.Component<RegisterProperties, RegisterState> {
     password: string,
     passwordOnce: string,
   ) {
-    const { handleError } = this.props;
+    const { register, handleError } = this.props;
     if (name === '' || password === '' || passwordOnce === '') {
       return;
     }
@@ -48,8 +49,7 @@ class Register extends React.Component<RegisterProperties, RegisterState> {
       return;
     }
     handleError(false, '');
-    // TODO: dispatch register
-
+    register(name, password);
     event.preventDefault();
   }
 

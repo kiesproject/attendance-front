@@ -24,6 +24,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     this.increase = this.increase.bind(this);
     this.decrease = this.decrease.bind(this);
     this.login = this.login.bind(this);
+    this.register = this.register.bind(this);
     this.logout = this.logout.bind(this);
     this.handleError = this.handleError.bind(this);
   }
@@ -41,6 +42,11 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
   login(id: string, password: string): void {
     const { dispatch } = this.props;
     dispatch(loginAsync(id, password));
+  }
+
+  register(name: string, password: string): void {
+    const { dispatch } = this.props;
+    dispatch(loginAsync(name, password));
   }
 
   logout(): void {
@@ -75,6 +81,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
               path="/register"
               render={() => (
                 <Register
+                  register={this.register}
                   account={account}
                   error={error}
                   handleError={this.handleError}
