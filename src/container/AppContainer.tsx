@@ -25,7 +25,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     this.decrease = this.decrease.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
-    this.refreshError = this.refreshError.bind(this);
+    this.handleError = this.handleError.bind(this);
   }
 
   increase(count: number): void {
@@ -48,9 +48,9 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     dispatch(logout());
   }
 
-  refreshError(): void {
+  handleError(isError: boolean, message: string): void {
     const { dispatch } = this.props;
-    dispatch(error(false, ''));
+    dispatch(error(isError, message));
   }
 
   render() {
@@ -67,7 +67,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
                   login={this.login}
                   account={account}
                   error={error}
-                  refreshError={this.refreshError}
+                  handleError={this.handleError}
                 />
               )}
             />
@@ -77,7 +77,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
                 <Register
                   account={account}
                   error={error}
-                  refreshError={this.refreshError}
+                  handleError={this.handleError}
                 />
               )}
             />

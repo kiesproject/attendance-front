@@ -8,7 +8,7 @@ interface LoginProperties {
   login(id: string, password: string): void;
   account: Account;
   error: Error;
-  refreshError(): void;
+  handleError(isError: boolean, message: ''): void;
 }
 
 interface LoginState {
@@ -27,8 +27,8 @@ class Login extends React.Component<LoginProperties, LoginState> {
   }
 
   componentWillMount() {
-    const { refreshError } = this.props;
-    refreshError();
+    const { handleError } = this.props;
+    handleError(false, '');
   }
 
   handleLogin(
@@ -36,11 +36,11 @@ class Login extends React.Component<LoginProperties, LoginState> {
     name: string,
     password: string,
   ) {
-    const { login, refreshError } = this.props;
+    const { login, handleError } = this.props;
     if (name === '' || password === '') {
       return;
     }
-    refreshError();
+    handleError(false, '');
     login(name, password);
     event.preventDefault();
   }
