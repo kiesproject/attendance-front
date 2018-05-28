@@ -38,12 +38,14 @@ class Register extends React.Component<RegisterProperties, RegisterState> {
     passwordOnce: string,
   ) {
     const { handleError } = this.props;
-    if (name === '' || password === '') {
+    if (name === '' || password === '' || passwordOnce === '') {
       return;
     }
     if (password !== passwordOnce) {
       event.preventDefault();
-      return handleError(true, '異なるパスワードを入力しています');
+      handleError(true, '異なるパスワードを入力しています');
+      this.setState({ password: '', passwordOnce: '' });
+      return;
     }
     handleError(false, '');
     // TODO: dispatch register
