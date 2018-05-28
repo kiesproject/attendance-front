@@ -4,8 +4,9 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import Home from '../components/screens/Home';
 import Login from '../components/screens/Login';
+import Register from '../components/screens/Register';
 
-import { decrease, increase, loginAsync, logout } from '../action';
+import { decrease, error, increase, loginAsync, logout } from '../action';
 import Navbar from '../components/Navbar';
 import Account from '../models/Account';
 import Error from '../models/Error';
@@ -24,6 +25,7 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     this.decrease = this.decrease.bind(this);
     this.login = this.login.bind(this);
     this.logout = this.logout.bind(this);
+    this.refreshError = this.refreshError.bind(this);
   }
 
   increase(count: number): void {
@@ -46,6 +48,11 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     dispatch(logout());
   }
 
+  refreshError(): void {
+    const { dispatch } = this.props;
+    dispatch(error(false, ''));
+  }
+
   render() {
     const { number, account, error } = this.props;
     return (
@@ -56,7 +63,22 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
             <Route
               path="/login"
               render={() => (
-                <Login login={this.login} account={account} error={error} />
+                <Login
+                  login={this.login}
+                  account={account}
+                  error={error}
+                  refreshError={this.refreshError}
+                />
+              )}
+            />
+            <Route
+              path="/register"
+              render={() => (
+                <Register
+                  account={account}
+                  error={error}
+                  refreshError={this.refreshError}
+                />
               )}
             />
             <Route
