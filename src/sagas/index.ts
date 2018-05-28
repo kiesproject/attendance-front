@@ -9,9 +9,7 @@ function* loginAsync(action: LoginAsync) {
     const response = yield call(postLogin, name, password);
     // TODO: get administer authority by response
     yield put(login(response.user, true));
-    yield put(errorAction(false, ''));
   } catch (error) {
-    // TODO: put action to error
     yield put(errorAction(true, error.message));
   }
 }
