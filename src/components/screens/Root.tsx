@@ -16,7 +16,7 @@ interface RegisterState {
   passwordOnce: string;
 }
 
-class Register extends React.Component<RegisterProperties, RegisterState> {
+class Root extends React.Component<RegisterProperties, RegisterState> {
   constructor(props: RegisterProperties) {
     super(props);
     this.state = {
@@ -121,4 +121,4 @@ class Register extends React.Component<RegisterProperties, RegisterState> {
   }
 }
 
-export default Register;
+export default Root;
