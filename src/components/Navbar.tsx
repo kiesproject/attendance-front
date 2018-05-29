@@ -33,7 +33,7 @@ const UserNavigation = (account: Account, logout: () => void) => {
         ログイン
       </Link>
       <Link
-        to="/register"
+        to="/"
         className="siimple-btn siimple-btn--green"
         style={{ margin: '4px', width: '80px' }}
       >

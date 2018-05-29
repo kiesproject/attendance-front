@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import Home from '../components/screens/Home';
 import Login from '../components/screens/Login';
-import Register from '../components/screens/Register';
+import Root from '../components/screens/Root';
 
 import {
   decrease,
@@ -85,17 +85,6 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
               )}
             />
             <Route
-              path="/register"
-              render={() => (
-                <Register
-                  register={this.register}
-                  account={account}
-                  error={error}
-                  handleError={this.handleError}
-                />
-              )}
-            />
-            <Route
               path="/home"
               render={() => (
                 <Home
@@ -106,6 +95,18 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
                 />
               )}
             />
+            <Route
+              path="/"
+              render={() => (
+                <Root
+                  register={this.register}
+                  account={account}
+                  error={error}
+                  handleError={this.handleError}
+                />
+              )}
+            />
+            <Redirect from="*" to="/" />
           </Switch>
         </div>
       </BrowserRouter>
