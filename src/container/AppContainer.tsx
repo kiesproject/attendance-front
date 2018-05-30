@@ -15,6 +15,7 @@ import {
   registerAsync,
 } from '../action';
 import Navbar from '../components/Navbar';
+import RegisterForm from '../components/RegisterForm';
 import Account from '../models/Account';
 import Error from '../models/Error';
 
@@ -80,6 +81,16 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
                   login={this.login}
                   account={account}
                   error={error}
+                  handleError={this.handleError}
+                />
+              )}
+            />
+            <Route
+              path="/register"
+              render={() => (
+                <RegisterForm
+                  error={error}
+                  register={this.register}
                   handleError={this.handleError}
                 />
               )}
