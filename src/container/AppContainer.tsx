@@ -88,11 +88,13 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
             <Route
               path="/register"
               render={() => (
-                <RegisterForm
-                  error={error}
-                  register={this.register}
-                  handleError={this.handleError}
-                />
+                <div className="register-form">
+                  <RegisterForm
+                    error={error}
+                    register={this.register}
+                    handleError={this.handleError}
+                  />
+                </div>
               )}
             />
             <Route

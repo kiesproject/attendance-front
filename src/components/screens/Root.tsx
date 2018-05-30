@@ -19,11 +19,23 @@ class Root extends React.Component<RegisterProperties, any> {
     return account.loggedIn ? (
       <Redirect to="/home" />
     ) : (
-      <RegisterForm
-        error={error}
-        register={register}
-        handleError={handleError}
-      />
+      <div className="root">
+        <div className="welcome-title">
+          <div className="siimple-h1 siimple--color-white">
+            ようこそサボらん♨へ︎
+          </div>
+          <div className="siimple-p siimple--color-white">
+            登録はこのページのフォームから！ログインは右上のボタンから！
+          </div>
+        </div>
+        <div className="welcome-form">
+          <RegisterForm
+            error={error}
+            register={register}
+            handleError={handleError}
+          />
+        </div>
+      </div>
     );
   }
 }

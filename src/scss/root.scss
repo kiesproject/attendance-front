@@ -1,0 +1,23 @@
+.root {
+  background: $siimple-orange;
+  overflow: hidden;
+}
+
+.welcome-title {
+  float: left;
+  margin-top: 4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.welcome-form {
+  float: right;
+  max-width: 20rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: 5rem;
+}
+
+.root-label {
+  color: $siimple-white;
+}

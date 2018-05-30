@@ -50,11 +50,14 @@ class RegisterForm extends React.Component<
 
   render() {
     const { error } = this.props;
+    const rootLabel = location.pathname === '/' ? 'root-label' : '';
     return (
-      <form className="siimple-form login-form">
-        <div className="siimple-form-title">登録</div>
+      <form className="siimple-form">
+        <div className={rootLabel + ' siimple-form-title'}>登録</div>
         <div className="siimple-form-field">
-          <div className="siimple-form-field-label">ユーザー名</div>
+          <div className={rootLabel + ' siimple-form-field-label'}>
+            ユーザー名
+          </div>
           <input
             type="text"
             className="siimple-input siimple-input--fluid"
@@ -64,7 +67,9 @@ class RegisterForm extends React.Component<
           />
         </div>
         <div className="siimple-form-field">
-          <div className="siimple-form-field-label">パスワード</div>
+          <div className={rootLabel + ' siimple-form-field-label'}>
+            パスワード
+          </div>
           <input
             type="password"
             className="siimple-input siimple-input--fluid"
@@ -72,7 +77,7 @@ class RegisterForm extends React.Component<
             value={this.state.password}
             onChange={event => this.setState({ password: event.target.value })}
           />
-          <div className="siimple-field-helper">
+          <div className={rootLabel + ' siimple-field-helper'}>
             英数字と記号のみ使用可能です
           </div>
           <input
@@ -84,7 +89,7 @@ class RegisterForm extends React.Component<
               this.setState({ passwordOnce: event.target.value })
             }
           />
-          <div className="siimple-field-helper">
+          <div className={rootLabel + ' siimple-field-helper'}>
             もう一度パスワードを入力してください。
           </div>
         </div>
@@ -105,7 +110,7 @@ class RegisterForm extends React.Component<
           </button>
         </div>
         {error.isError && (
-          <div className="siimple-form-field-helper siimple--color-red">
+          <div className="siimple-form-field-helper siimple--color-red-dark">
             {error.message}
           </div>
         )}
