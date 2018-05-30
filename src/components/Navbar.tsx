@@ -25,11 +25,7 @@ const UserNavigation = (account: Account, logout: () => void) => {
     </div>
   ) : (
     <div>
-      <Link
-        to="/login"
-        className="siimple-btn siimple-btn--blue"
-        style={{ margin: '4px', width: '80px' }}
-      >
+      <Link to="/login" className="siimple-btn siimple-btn--blue">
         ログイン
       </Link>
     </div>
