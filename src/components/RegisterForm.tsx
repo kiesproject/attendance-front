@@ -53,9 +53,9 @@ class RegisterForm extends React.Component<
     const rootLabel = location.pathname === '/' ? 'root-label' : '';
     return (
       <form className="siimple-form">
-        <div className={rootLabel + ' siimple-form-title'}>登録</div>
+        <div className={[rootLabel, ' siimple-form-title'].join(' ')}>登録</div>
         <div className="siimple-form-field">
-          <div className={rootLabel + ' siimple-form-field-label'}>
+          <div className={[rootLabel, ' siimple-form-field-label'].join(' ')}>
             ユーザー名
           </div>
           <input
@@ -67,7 +67,7 @@ class RegisterForm extends React.Component<
           />
         </div>
         <div className="siimple-form-field">
-          <div className={rootLabel + ' siimple-form-field-label'}>
+          <div className={[rootLabel, ' siimple-form-field-label'].join(' ')}>
             パスワード
           </div>
           <input
@@ -77,7 +77,7 @@ class RegisterForm extends React.Component<
             value={this.state.password}
             onChange={event => this.setState({ password: event.target.value })}
           />
-          <div className={rootLabel + ' siimple-field-helper'}>
+          <div className={[rootLabel, ' siimple-field-helper'].join(' ')}>
             英数字と記号のみ使用可能です
           </div>
           <input
@@ -89,7 +89,7 @@ class RegisterForm extends React.Component<
               this.setState({ passwordOnce: event.target.value })
             }
           />
-          <div className={rootLabel + ' siimple-field-helper'}>
+          <div className={[rootLabel, ' siimple-field-helper'].join(' ')}>
             もう一度パスワードを入力してください。
           </div>
         </div>

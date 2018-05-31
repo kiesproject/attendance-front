@@ -50,47 +50,51 @@ class Login extends React.Component<LoginProperties, LoginState> {
     return account.loggedIn ? (
       <Redirect to="/home" />
     ) : (
-      <form className="siimple-form login-form">
-        <div className="siimple-form-title">ログイン</div>
-        <div className="siimple-form-field">
-          <div className="siimple-form-field-label">ユーザー名</div>
-          <input
-            type="text"
-            className="siimple-input siimple-input--fluid"
-            placeholder="kiesproject"
-            required
-            value={this.state.name}
-            onChange={event => this.setState({ name: event.target.value })}
-          />
-        </div>
-        <div className="siimple-form-field">
-          <div className="siimple-form-field-label">パスワード</div>
-          <input
-            type="password"
-            className="siimple-input siimple-input--fluid"
-            placeholder="*********"
-            required
-            value={this.state.password}
-            onChange={event => this.setState({ password: event.target.value })}
-          />
-        </div>
-        <div className="siimple-form-field">
-          <button
-            className="siimple-btn siimple-btn--blue"
-            type="submit"
-            onClick={event =>
-              this.handleLogin(event, this.state.name, this.state.password)
-            }
-          >
-            ログイン
-          </button>
-        </div>
-        {error.isError && (
-          <div className="siimple-form-field-helper siimple--color-red">
-            {error.message}
+      <div className="login-form">
+        <form className="siimple-form">
+          <div className="siimple-form-title">ログイン</div>
+          <div className="siimple-form-field">
+            <div className="siimple-form-field-label">ユーザー名</div>
+            <input
+              type="text"
+              className="siimple-input siimple-input--fluid"
+              placeholder="kiesproject"
+              required
+              value={this.state.name}
+              onChange={event => this.setState({ name: event.target.value })}
+            />
           </div>
-        )}
-      </form>
+          <div className="siimple-form-field">
+            <div className="siimple-form-field-label">パスワード</div>
+            <input
+              type="password"
+              className="siimple-input siimple-input--fluid"
+              placeholder="*********"
+              required
+              value={this.state.password}
+              onChange={event =>
+                this.setState({ password: event.target.value })
+              }
+            />
+          </div>
+          <div className="siimple-form-field">
+            <button
+              className="siimple-btn siimple-btn--blue"
+              type="submit"
+              onClick={event =>
+                this.handleLogin(event, this.state.name, this.state.password)
+              }
+            >
+              ログイン
+            </button>
+          </div>
+          {error.isError && (
+            <div className="siimple-form-field-helper siimple--color-red">
+              {error.message}
+            </div>
+          )}
+        </form>
+      </div>
     );
   }
 }

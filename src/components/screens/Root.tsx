@@ -20,20 +20,22 @@ class Root extends React.Component<RegisterProperties, any> {
       <Redirect to="/home" />
     ) : (
       <div className="root">
-        <div className="welcome-title">
-          <div className="siimple-h1 siimple--color-white">
-            ようこそサボらん♨へ︎
+        <div className="root-inner">
+          <div className="welcome-title">
+            <div className="siimple-jumbotron-title siimple--color-white">
+              ようこそXXXXXへ︎
+            </div>
+            <div className="siimple-jumbotron-detail siimple--color-white">
+              登録はこのページのフォームから！ログインは右上のボタンから！
+            </div>
           </div>
-          <div className="siimple-p siimple--color-white">
-            登録はこのページのフォームから！ログインは右上のボタンから！
+          <div className="welcome-form">
+            <RegisterForm
+              error={error}
+              register={register}
+              handleError={handleError}
+            />
           </div>
-        </div>
-        <div className="welcome-form">
-          <RegisterForm
-            error={error}
-            register={register}
-            handleError={handleError}
-          />
         </div>
       </div>
     );
