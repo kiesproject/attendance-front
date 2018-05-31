@@ -23,10 +23,18 @@ const UserNavigation = (account: Account, logout: () => void) => {
         ログアウト
       </Link>
     </div>
+  ) : location.pathname === '/login' ? (
+    <div>
+      <Link to="/register" className="siimple-btn siimple-btn--green">
+        登録
+      </Link>
+    </div>
   ) : (
-    <Link to="/login" className="siimple-btn siimple-btn--blue">
-      ログイン
-    </Link>
+    <div>
+      <Link to="/login" className="siimple-btn siimple-btn--blue">
+        ログイン
+      </Link>
+    </div>
   );
 };
 

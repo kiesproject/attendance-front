@@ -1,0 +1,41 @@
+.root {
+  background: $siimple-orange;
+  overflow: hidden;
+  margin: {
+    right: auto;
+    left: auto;
+  }
+}
+
+.root-inner {
+  max-width: 1100px;
+  margin: {
+    top: 0px;
+    bottom: 0px;
+    right: auto;
+    left: auto;
+  }
+}
+
+.welcome-title {
+  float: left;
+  margin-top: 4rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.welcome-form {
+  float: right;
+  min-width: 16rem;
+  max-width: 30rem;
+  padding: {
+    top: 2rem;
+    left: 2rem;
+    right: 2rem;
+    bottom: 0px;
+  }
+}
+
+.root-label {
+  color: $siimple-white;
+}

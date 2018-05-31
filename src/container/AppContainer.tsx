@@ -1,12 +1,21 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import Home from '../components/screens/Home';
 import Login from '../components/screens/Login';
+import Root from '../components/screens/Root';
 
-import { decrease, increase, loginAsync, logout } from '../action';
+import {
+  decrease,
+  error,
+  increase,
+  loginAsync,
+  logout,
+  registerAsync,
+} from '../action';
 import Navbar from '../components/Navbar';
+import RegisterForm from '../components/RegisterForm';
 import Account from '../models/Account';
 import Error from '../models/Error';
 
@@ -23,7 +32,9 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     this.increase = this.increase.bind(this);
     this.decrease = this.decrease.bind(this);
     this.login = this.login.bind(this);
+    this.register = this.register.bind(this);
     this.logout = this.logout.bind(this);
+    this.handleError = this.handleError.bind(this);
   }
 
   increase(count: number): void {
@@ -41,9 +52,19 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
     dispatch(loginAsync(id, password));
   }
 
+  register(name: string, password: string): void {
+    const { dispatch } = this.props;
+    dispatch(registerAsync(name, password));
+  }
+
   logout(): void {
     const { dispatch } = this.props;
     dispatch(logout());
+  }
+
+  handleError(isError: boolean, message: string): void {
+    const { dispatch } = this.props;
+    dispatch(error(isError, message));
   }
 
   render() {
@@ -56,7 +77,24 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
             <Route
               path="/login"
               render={() => (
-                <Login login={this.login} account={account} error={error} />
+                <Login
+                  login={this.login}
+                  account={account}
+                  error={error}
+                  handleError={this.handleError}
+                />
+              )}
+            />
+            <Route
+              path="/register"
+              render={() => (
+                <div className="register-form">
+                  <RegisterForm
+                    error={error}
+                    register={this.register}
+                    handleError={this.handleError}
+                  />
+                </div>
               )}
             />
             <Route
@@ -70,6 +108,18 @@ class AppContainer extends React.Component<AppContainerProperties, any> {
                 />
               )}
             />
+            <Route
+              path="/"
+              render={() => (
+                <Root
+                  register={this.register}
+                  account={account}
+                  error={error}
+                  handleError={this.handleError}
+                />
+              )}
+            />
+            <Redirect from="*" to="/" />
           </Switch>
         </div>
       </BrowserRouter>
