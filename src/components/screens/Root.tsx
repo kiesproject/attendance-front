@@ -23,7 +23,7 @@ class Root extends React.Component<RegisterProperties, any> {
         <div className="root-inner">
           <div className="welcome-title">
             <div className="siimple-jumbotron-title siimple--color-white">
-              ようこそXXXXXへ︎
+              ようこそサボらん♨︎へ︎
             </div>
             <div className="siimple-jumbotron-detail siimple--color-white">
               登録はこのページのフォームから！ログインは右上のボタンから！
