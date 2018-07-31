@@ -22,38 +22,47 @@
   "homepage": "https://github.com/nnsnico/attendance-front#readme",
   "dependencies": {
     "history": "^4.7.2",
-    "react": "^16.3.1",
-    "react-dom": "^16.3.1",
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
-    "react-router-dom": "^4.2.2",
+    "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
     "redux-saga": "^0.16.0",
     "regenerator-runtime": "^0.12.0",
-    "siimple": "^3.1.0-beta.2"
+    "siimple": "^3.1.0",
+    "siimple-colors": "^1.0.0-beta.1"
   },
   "devDependencies": {
-    "@types/history": "^4.6.2",
-    "@types/react": "^16.3.10",
-    "@types/react-dom": "^16.0.5",
-    "@types/react-redux": "^6.0.0",
-    "@types/react-router-dom": "^4.2.6",
+    "@types/history": "^4.7.0",
+    "@types/react": "^16.4.7",
+    "@types/react-dom": "^16.0.6",
+    "@types/react-redux": "^6.0.5",
+    "@types/react-router-dom": "^4.3.0",
     "@types/redux": "^3.6.0",
     "@types/redux-logger": "^3.0.6",
-    "firebase-tools": "^4.0.0",
+    "firebase-tools": "^4.0.1",
+    "hoek": "^5.0.3",
     "husky": "^0.14.3",
-    "lint-staged": "^7.0.4",
-    "node-sass": "^4.8.3",
-    "parcel-bundler": "^1.8.1",
-    "prettier": "^1.12.1",
-    "tslint": "^5.9.1",
-    "tslint-config-airbnb": "^5.8.0",
-    "tslint-config-prettier": "^1.12.0",
+    "lint-staged": "^7.2.0",
+    "lodash": "^4.17.10",
+    "node-sass": "^4.9.2",
+    "parcel-bundler": "^1.9.7",
+    "prettier": "^1.14.0",
+    "tslint": "^5.11.0",
+    "tslint-config-airbnb": "^5.9.2",
+    "tslint-config-prettier": "^1.14.0",
     "tslint-plugin-prettier": "^1.3.0",
-    "typescript": "^2.8.1"
+    "typescript": "^3.0.1"
   },
   "lint-staged": {
-    "*.{js,json,css}": ["prettier --write", "git add"],
-    "*.{ts,tsx}": ["tslint --fix", "git add"]
+    "*.{js,json,css}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "tslint --fix",
+      "git add"
+    ]
   }
 }
